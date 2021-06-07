@@ -1,5 +1,7 @@
 FROM cschranz/gpu-jupyter:latest
 
+USER root
+
 RUN pip install dgl-cu110 --no-cache-dir
 
 RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter --no-build && \
@@ -19,3 +21,5 @@ RUN jupyter lab build -y && \
     conda clean --all -f -y && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
+
+USER $NB_UID
