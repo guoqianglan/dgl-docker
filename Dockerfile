@@ -1,7 +1,7 @@
 FROM cschranz/gpu-jupyter:latest
 
 USER root
-
+RUN conda install "nbconvert=5.6.1"
 RUN pip install dgl-cu110 --no-cache-dir
 
 RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter --no-build && \
